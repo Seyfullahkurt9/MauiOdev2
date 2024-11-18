@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.KrediHesaplama"
+             xmlns:local="clr-namespace:MauiApp1"
+             Title="Kredi Hesaplama"
+             BackgroundColor="Gray">
+
+    <ContentPage.Resources>
+        <x:Array x:Key="krediTurleri" Type="{x:Type x:String}">
+            <x:String>İhtiyaç Kredisi</x:String>
+            <x:String>Konut Kredisi</x:String>
+            <x:String>Taşıt Kredisi</x:String>
+            <x:String>Ticari Kredi</x:String>
+        </x:Array>
+    </ContentPage.Resources>
+
+
+    <StackLayout Padding="20" BackgroundColor="#FCFFC4">
+
+        <Picker Title="Kredi Türü Seçiniz" x:Name="pickerKrediTuru" ItemsSource="{StaticResource krediTurleri}" TitleColor="DarkRed"/>
+
+
+        <Entry Placeholder="Kredi Tutarı" x:Name="txtKrediTutari" TextColor="DarkRed"/>
+        <Entry Placeholder="Yıllık Faiz Oranı (%)" x:Name="txtFaizOrani" TextColor="DarkRed"/>
+        <Entry Placeholder="Vade (Ay)" x:Name="txtVade" TextColor="DarkRed"/>
+        <Slider x:Name="sliderVade" Maximum="60" Minimum="1" Value="{Binding Source={x:Reference txtVade}, Path=Text, Mode=TwoWay}" />
+
+        
+        <Button Text="Hesapla" Clicked="Hesapla_Clicked" TextColor="White" />
+        <Label Text="Aylık Taksit: " x:Name="lblAylıkTaksit" HorizontalOptions="Center" TextColor="DarkRed" />
+        <Label Text="Toplam Ödeme: " x:Name="lblToplamOdeme" HorizontalOptions="Center" TextColor="DarkRed" />
+        <Label Text="Toplam Faiz: " x:Name="lblToplamFaiz" HorizontalOptions="Center" TextColor="DarkRed" />
+
+    </StackLayout>
+</ContentPage>
